@@ -26,7 +26,6 @@ int main()
 
     Processor* arr = new Processor[n];
 
-    // Ввід
     for (int i = 0; i < n; i++)
     {
         cout << "Назва:" << endl;
