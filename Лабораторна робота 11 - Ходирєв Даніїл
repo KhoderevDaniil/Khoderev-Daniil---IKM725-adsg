@@ -1,0 +1,86 @@
+#include <iostream>
+using namespace std;
+#include "windows.h";
+
+int main()
+{
+    setlocale(LC_CTYPE, "ukr");
+    /* Task 11
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    float a, b;
+    float* pa, * pb;
+
+    pa = &a;
+    pb = &b;
+
+    cout << "������ a: " << endl;
+    cin >> a;
+
+    cout << "������ b: " << endl;
+    cin >> b;
+
+    *pa = *pa * 3;
+    *pb = *pb / 3;
+
+    cout << "a �������� � 3 ���� = " << *pa << endl;
+    cout << "b �������� � 3 ���� = " << *pb << endl;
+
+    return 0;
+    */
+
+
+    /* Tas 2
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    char* p;
+
+    p = new char; 
+
+    *p = 'A';
+
+    cout << "�������� = " << *p << endl;
+
+    delete p;
+
+    return 0;
+    */
+
+   
+    int n, m;
+    cout << "������ ����� ������ x: ";
+    cin >> n;
+    cout << "������ ����� ������ y: ";
+    cin >> m;
+
+    int* x = new int[n];
+    int* y = new int[m];
+
+    cout << "������ �������� ������ x:" << endl;
+    for (int i = 0; i < n; i++)
+        cin >> x[i];
+
+    cout << "������ �������� ������ y:" << endl;
+    for (int i = 0; i < m; i++)
+        cin >> y[i];
+
+    int count = 0;
+    int target = y[1];
+
+    for (int i = 0; i < n; i++)
+    {
+        if (x[i] == target)
+            count++;
+    }
+
+    cout << "������ ������� ������ y = " << target << endl;
+    cout << "ʳ������ �������� � ����� x = " << count << endl;
+
+    delete[] x;
+    delete[] y;
+
+    return 0;
+    
+}
