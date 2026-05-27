@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+#include "windows.h"
+
+
+int row(int n)
+{
+    if (n == 1)
+    {
+        return 40;
+    }
+    return row(n - 1) / 2;
+}
+
+void main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    int n;
+
+    cout << "Введіть n:" << endl;
+    cin >> n;
+
+    for (int i = 1; i <= n; i++)
+    {
+        cout << row(i) << endl;
+    }
+}
