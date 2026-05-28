@@ -1,0 +1,128 @@
+#include <iostream>
+#include <string>
+#include <windows.h>
+using namespace std;
+
+class phone {
+	string surname;
+	string name;
+	string patronymic;
+	string address;
+	string number;
+	float city_time;
+	float intercity_time;
+
+public:
+	phone(string s, string n, string p, string a, string num, float ct, float it)
+	{
+		surname = s;
+		name = n;
+		patronymic = p;
+		address = a;
+		number = num;
+		city_time = ct;
+		intercity_time = it;
+	}
+
+	float get_city_time()
+	{
+		return city_time;
+	}
+
+	float get_intercity_time()
+	{
+		return intercity_time;
+	}
+
+	string get_surname()
+	{
+		return surname;
+	}
+
+	void show()
+	{
+		cout << surname << " " << name << " " << patronymic << endl;
+		cout << "Адрес: " << address << endl;
+		cout << "Номер: " << number << endl;
+		cout << "Внутрішньоміський час: " << city_time << endl;
+		cout << "Міжміський час: " << intercity_time << endl;
+		cout << "------------------------" << endl;
+	}
+};
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	int N;
+	cout << "Введіть кількість абонентів: ";
+	cin >> N;
+
+	phone** arr = new phone * [N];
+
+	string s, n, p, a, num;
+	float ct, it;
+
+	for (int i = 0; i < N; i++)
+	{
+		cout << "Прізвище: ";
+		cin >> s;
+		cout << "Ім'я: ";
+		cin >> n;
+		cout << "По батькові: ";
+		cin >> p;
+		cout << "Адреса: ";
+		cin >> a;
+		cout << "Номер: ";
+		cin >> num;
+		cout << "Час внутрішньоміських розмов: ";
+		cin >> ct;
+		cout << "Час міжміських розмов: ";
+		cin >> it;
+
+		arr[i] = new phone(s, n, p, a, num, ct, it);
+	}
+
+	cout << endl << "=== а) Перевищення внутрішньоміського часу (>100) ===" << endl;
+
+	for (int i = 0; i < N; i++)
+	{
+		if (arr[i]->get_city_time() > 100)
+		{
+			arr[i]->show();
+		}
+	}
+
+	cout << endl << "=== б) Користувалися міжміським зв'язком (>0) ===" << endl;
+
+	for (int i = 0; i < N; i++)
+	{
+		if (arr[i]->get_intercity_time() > 0)
+		{
+			arr[i]->show();
+		}
+	}
+	 
+	for (int i = 0; i < N - 1; i++)
+	{
+		for (int j = i + 1; j < N; j++)
+		{
+			if (arr[i]->get_surname() > arr[j]->get_surname())
+			{
+				phone* temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+
+	cout << endl << "=== в) В алфавітному порядку ===" << endl;
+
+	for (int i = 0; i < N; i++)
+	{
+		arr[i]->show();
+	}
+
+	return 0;
+}
