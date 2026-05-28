@@ -1,0 +1,99 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+
+class address
+{
+private:
+    string city;
+    string street;
+    int house;
+
+public:
+    address(string c, string s, int h)
+    {
+        setCity(c);
+        setStreet(s);
+        setHouse(h);
+    }
+
+    void setCity(string c)
+    {
+        if (c != "")
+            city = c;
+        else
+            city = "Невідомо";
+    }
+
+    void setStreet(string s)
+    {
+        if (s != "")
+            street = s;
+        else
+            street = "Невідомо";
+    }
+
+    void setHouse(int h)
+    {
+        if (h > 0)
+            house = h;
+        else
+            house = 1;
+    }
+
+    void showAddress()
+    {
+        cout << "Місто: " << city << endl;
+        cout << "Вулиця: " << street << endl;
+        cout << "Будинок: " << house << endl;
+    }
+};
+class organization : public address
+{
+private:
+    string name;
+    int workers;
+
+public:
+    organization(string c, string s, int h, string n, int w)
+        : address(c, s, h)
+    {
+        setName(n);
+        setWorkers(w);
+    }
+
+    void setName(string n)
+    {
+        if (n != "")
+            name = n;
+        else
+            name = "Без назви";
+    }
+
+    void setWorkers(int w)
+    {
+        if (w > 0)
+            workers = w;
+        else
+            workers = 0;
+    }
+
+    void showOrganization()
+    {
+        cout << "Назва: " << name << endl;
+        cout << "Кількість працівників: " << workers << endl;
+        showAddress();
+    }
+};
+int main()
+{
+    setlocale(LC_CTYPE, "ukr");
+    organization org("Харків", "Палац Спорта", 10, "ББББ", 25);
+
+    org.showOrganization();
+
+    return 0;
+}
