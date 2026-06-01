@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+template <class T>
+void Add(T arr[], int size, T value)
+{
+    arr[size] = value;
+}
+
+void main()
+{
+    int arr[10] = { 1, 2, 3 };
+    int size = 3;
+
+    Add(arr, size, 4);
+    size++;
+
+    for (int i = 0; i < size; i++)
+        cout << arr[i] << " ";
+}
