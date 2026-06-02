@@ -1,0 +1,91 @@
+#include <iostream>
+#include "windows.h"
+using namespace std;
+
+class matrix
+{
+    int a[10];
+
+public:
+    matrix() {}
+
+    void input()
+    {
+        for (int i = 0; i < 10; i++)
+            cin >> a[i];
+    }
+
+    void show()
+    {
+        for (int i = 0; i < 10; i++)
+            cout << a[i] << " ";
+        cout << endl;
+    }
+
+    matrix operator-(matrix op2);
+    matrix operator*(matrix op2);
+    matrix operator==(matrix op2);
+};
+
+matrix matrix::operator-(matrix op2)
+{
+    matrix temp;
+    for (int i = 0; i < 10; i++)
+        temp.a[i] = a[i] - op2.a[i];
+    return temp;
+}
+
+matrix matrix::operator*(matrix op2)
+{
+    matrix temp;
+    for (int i = 0; i < 10; i++)
+        temp.a[i] = a[i] * op2.a[i];
+    return temp;
+}
+
+matrix matrix::operator==(matrix op2)
+{
+    matrix temp;
+    for (int i = 0; i < 10; i++)
+    {
+        if (a[i] == op2.a[i])
+            temp.a[i] = 1;
+        else
+            temp.a[i] = 0;
+    }
+    return temp;
+}
+
+int main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    matrix m1, m2, res;
+
+    cout << "Введіть 10 елементів m1: ";
+    m1.input();
+
+    cout << "Введіть 10 елементів m2: ";
+    m2.input();
+
+    cout << "m1: ";
+    m1.show();
+
+    cout << "m2: ";
+    m2.show();
+
+    res = m1 - m2;
+    cout << "m1 - m2: ";
+    res.show();
+
+    res = m1 * m2;
+    cout << "m1 * m2: ";
+    res.show();
+
+    res = m1 == m2;
+    cout << "m1 == m2: ";
+    res.show();
+
+    return 0;
+}
